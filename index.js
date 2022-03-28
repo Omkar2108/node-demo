@@ -6,7 +6,7 @@ const options = {
   cert: fs.readFileSync(`./cert.pem`)
 };
 
-const port = 4000;
+const port = process.env.port || 4000;
 
 https.createServer(options, (req, res) => {
   res.writeHead(200);
