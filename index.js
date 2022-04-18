@@ -1,14 +1,12 @@
-const https = require(`https`);
-const fs = require(`fs`);
+const express = require('express');
 
-const options = {
-  key: fs.readFileSync(`./key.pem`),
-  cert: fs.readFileSync(`./cert.pem`)
-};
+const app = express();
+const port = 4000;
 
-const port = process.env.port || 4000;
+app.get('/', (_, res)=>{
+  res.send("Hello World!");
+})
 
-https.createServer(options, (req, res) => {
-  res.writeHead(200);
-  res.end(`hello world\n`);
-}).listen(port);
+app.listen(port, ()=>{
+  console.log(`Server is running on port ${port}`);
+})
